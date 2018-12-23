@@ -45,7 +45,22 @@
 			if (this.x < -step || this.x > side - 30 || this.y < -step || this.y > side - 30) {
 				this.xSpeed = 0;
 				this.ySpeed = 0;
-				setTimeout(function () {document.location.reload();}, 300);
+				setTimeout(function () {
+					setInterval(function () {
+						ctx.clearRect(0, 0, side, side);
+						ball.draw();
+						ball.collisionCheck();
+						if (food.isFood == 0) {
+							food.x = Math.floor(Math.random() * (side - 15));
+							food.y = Math.floor(Math.random() * (side - 15));
+							food.isFood = true;	
+						}
+						food.draw();
+						ball.move();
+						ctx.strokeRect(0, 0, side, side);
+						$("h1").text("Your score is " + score);
+					}, 1);
+				}, 300);
 			}
 
 			this.x += this.xSpeed;
@@ -96,7 +111,22 @@
 			if ((direction === "left" && hotKeys[event.keyCode] === "right") || (direction === "right" && hotKeys[event.keyCode] === "left") || (direction === "down" && hotKeys[event.keyCode] === "up") || (direction === "up" && hotKeys[event.keyCode] === "down")) {
 				ball.xSpeed = 0;
 				ball.ySpeed = 0;
-				setTimeout(function () {document.location.reload();}, 300);
+				setTimeout(function () {
+					setInterval(function () {
+						ctx.clearRect(0, 0, side, side);
+						ball.draw();
+						ball.collisionCheck();
+						if (food.isFood == 0) {
+							food.x = Math.floor(Math.random() * (side - 15));
+							food.y = Math.floor(Math.random() * (side - 15));
+							food.isFood = true;	
+						}
+						food.draw();
+						ball.move();
+						ctx.strokeRect(0, 0, side, side);
+						$("h1").text("Your score is " + score);
+					}, 1);
+				}, 300);
 			} else {
 				direction = hotKeys[event.keyCode];
 				ball.setDirection(direction);
