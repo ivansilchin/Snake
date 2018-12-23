@@ -40,7 +40,13 @@
 			if (this.x < -step || this.x > side - 30 || this.y < -step || this.y > side - 30) {
 				this.xSpeed = 0;
 				this.ySpeed = 0;
-				setTimeout(function () {document.location.reload();}, 300);
+				setTimeout(function () {
+					this.x = side / 2 - step / 2;
+					this.y = side / 2 - step / 2;
+					score = 0;
+					food.x = Math.floor(Math.random() * (side - 15));
+					food.y = Math.floor(Math.random() * (side - 15));
+				}, 300);
 			}
 			this.x += this.xSpeed;
 			this.y += this.ySpeed;
@@ -85,7 +91,13 @@
 			if ((direction === "left" && hotKeys[event.keyCode] === "right") || (direction === "right" && hotKeys[event.keyCode] === "left") || (direction === "down" && hotKeys[event.keyCode] === "up") || (direction === "up" && hotKeys[event.keyCode] === "down")) {
 				ball.xSpeed = 0;
 				ball.ySpeed = 0;
-				setTimeout(function () {document.location.reload();}, 300);
+				setTimeout(function () {
+					this.x = side / 2 - step / 2;
+					this.y = side / 2 - step / 2;
+					score = 0;
+					food.x = Math.floor(Math.random() * (side - 15));
+					food.y = Math.floor(Math.random() * (side - 15));
+				}, 300);
 			} else {
 				direction = hotKeys[event.keyCode];
 				ball.setDirection(direction);
